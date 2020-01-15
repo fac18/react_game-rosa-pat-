@@ -35,7 +35,7 @@ const Header = props => {
           <option value='medium'> Medium</option>
           <option value='hard'> Hard</option>
         </select>
-        <input className='submit' type='submit'></input>
+        <button onclick='' className='submit' type='submit'></button>
       </form>
     </div>
   );
