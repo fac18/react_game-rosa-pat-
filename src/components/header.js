@@ -8,7 +8,7 @@ const Header = props => {
         A fun game to test your memory....pick a theme to get started!
       </p>
       <form className='form'>
-        <label className='label' for='name'>
+        <label className='label' htmlFor='name'>
           Name
         </label>
         <input
@@ -16,10 +16,10 @@ const Header = props => {
           id='name'
           type='text'
           name='name'
-          value=''
+          // value=''
           placeholder='Put your name here!'
         ></input>
-        <label className='label' for='theme'>
+        <label className='label' htmlFor='theme'>
           Theme
         </label>
         <input
@@ -27,7 +27,7 @@ const Header = props => {
           id='theme'
           type='text'
           name='theme'
-          value=''
+          // value=''
           placeholder='Pick your theme!'
         ></input>
         <select className='dropdown'>
