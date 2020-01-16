@@ -34,13 +34,19 @@ const checkResponse = response => {
 // Header
 
 const Header = props => {
-  const [theme, setTheme] = useState('HELLO');
+  const [theme, setTheme] = useState('');
+
   console.log('i am the new theme', theme);
 
   const handleSubmit = e => {
     console.log('I am the submitted theme', theme);
     console.log(`submitting theme ${theme}`);
-    const response = getData(theme);
+    getData(theme).then(
+      data => {
+        props.setPhotoArray(data);
+      }
+
+    );
     // const parsedResponse = JSON.parse(response);
     // console.log(typeof response);
     // console.log('our response ', response );
@@ -50,6 +56,8 @@ const Header = props => {
     // console.log(' our api response', response);
     e.preventDefault();
   };
+
+  console.log("i am the theme inside handlesubmit", props.photoArray)
 
   return (
     <div>
