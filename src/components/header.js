@@ -8,13 +8,22 @@ const checkResponse = response => {
     return;
   }
   return response.json();
+
 };
 
 export const getData = querystring => {
   return fetch(
-    `https://api.unsplash.com/search/photos?page=1&query=${querystring}&orientation=portrait&client_id=${process.env.REACT_APP_UNSPLASH_TOKEN}`
+    `https://api.unsplash.com/search/photos?page=1&query=${querystring}&page=10&orientation=portrait&client_id=${process.env.REACT_APP_UNSPLASH_TOKEN}`
   )
-    .then(checkResponse)
+    .then (checkResponse)
+    .then (data => {
+      const arrObj = data.results;
+      // console.log('our objects array', arrObj);
+      const imageURLs = arrObj.map(obj => {
+        return [obj.id, obj.urls.thumb];
+      });
+      console.log(imageURLs);
+    })
     .catch(err => {
       throw new Error(`fetch getData failed ${err}`);
     });
@@ -31,6 +40,14 @@ const Header = props => {
   const handleSubmit = e => {
     console.log('I am the submitted theme', theme);
     console.log(`submitting theme ${theme}`);
+    const response = getData(theme);
+    // const parsedResponse = JSON.parse(response);
+    // console.log(typeof response);
+    // console.log('our response ', response );
+    // const imagesUrls = [];
+    // const picNumber = 9;
+    
+    // console.log(' our api response', response);
     e.preventDefault();
   };
 
@@ -40,7 +57,7 @@ const Header = props => {
       <p className='description'>
         A fun game to test your memory....pick a theme to get started!
       </p>
-      <form className='form'>
+      <form onSubmit={handleSubmit} className='form'>
         <label className='label' htmlFor='name'>
           Name
         </label>
@@ -69,7 +86,7 @@ const Header = props => {
           <option value='medium'> Medium</option>
           <option value='hard'> Hard</option>
         </select>
-        <button onClick={handleSubmit} className='submit' type='submit'>
+        <button className='submit' type='submit'>
           I AM THE BUTTON
         </button>
       </form>
