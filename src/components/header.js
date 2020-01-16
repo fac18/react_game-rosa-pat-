@@ -22,7 +22,8 @@ const checkResponse = response => {
       const imageURLs = arrObj.map(obj => {
         return [obj.id, obj.urls.thumb];
       });
-     return imageURLs;
+      const final = imageURLs.concat(imageURLs).sort(() => Math.random() - 0.5);
+      return final;
     })
     .catch(err => {
       throw new Error(`fetch getData failed ${err}`);
