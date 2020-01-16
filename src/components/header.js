@@ -11,7 +11,7 @@ const checkResponse = response => {
 
 };
 
-export const getData = querystring => {
+ export const getData = querystring => {
   return fetch(
     `https://api.unsplash.com/search/photos?page=1&query=${querystring}&page=10&orientation=portrait&client_id=${process.env.REACT_APP_UNSPLASH_TOKEN}`
   )
@@ -22,7 +22,7 @@ export const getData = querystring => {
       const imageURLs = arrObj.map(obj => {
         return [obj.id, obj.urls.thumb];
       });
-      console.log(imageURLs);
+     return imageURLs;
     })
     .catch(err => {
       throw new Error(`fetch getData failed ${err}`);
