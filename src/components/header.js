@@ -1,6 +1,39 @@
-import React from 'react';
+import React, { useState } from 'react';
+
+// API call
+
+const checkResponse = response => {
+  if (response.status !== 200) {
+    console.log(`Error with the request! ${response.status}`);
+    return;
+  }
+  return response.json();
+};
+
+export const getData = querystring => {
+  return fetch(
+    `https://api.unsplash.com/search/photos?page=1&query=${querystring}&orientation=portrait&client_id=${process.env.REACT_APP_UNSPLASH_TOKEN}`
+  )
+    .then(checkResponse)
+    .catch(err => {
+      throw new Error(`fetch getData failed ${err}`);
+    });
+};
+
+// Extract data from form using react
+
+// Header
 
 const Header = props => {
+  const [theme, setTheme] = useState('HELLO');
+  console.log('i am the new theme', theme);
+
+  const handleSubmit = e => {
+    console.log('I am the submitted theme', theme);
+    console.log(`submitting theme ${theme}`);
+    e.preventDefault();
+  };
+
   return (
     <div>
       <h1 className='title'> Test your RAM!</h1>;
@@ -27,7 +60,8 @@ const Header = props => {
           id='theme'
           type='text'
           name='theme'
-          // value=''
+          // value={theme}
+          onChange={e => setTheme(e.target.value)}
           placeholder='Pick your theme!'
         ></input>
         <select className='dropdown'>
@@ -35,7 +69,9 @@ const Header = props => {
           <option value='medium'> Medium</option>
           <option value='hard'> Hard</option>
         </select>
-        <button onclick='' className='submit' type='submit'></button>
+        <button onClick={handleSubmit} className='submit' type='submit'>
+          I AM THE BUTTON
+        </button>
       </form>
     </div>
   );
