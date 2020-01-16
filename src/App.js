@@ -6,10 +6,11 @@ import Footer from './components/footer.js';
 // import REACT_APP_UNSPLASH_TOKEN from '../../src/.env';
 
 function App() {
+  const [photoArray, setPhotoArray] = React.useState([]);
   return (
     <div className='App'>
-      <Header />
-      <Cards />
+      <Header photoArray={photoArray} setPhotoArray= {setPhotoArray} />
+      <Cards photoArray={photoArray} />
       <Footer />
     </div>
   );
