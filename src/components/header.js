@@ -96,7 +96,7 @@ const Header = props => {
           <option value='hard'> Hard</option>
         </select>
         <button className='submit' type='submit'>
-          I AM THE BUTTON
+          PLAY 
         </button>
       </form>
     </div>
