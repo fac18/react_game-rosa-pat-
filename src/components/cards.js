@@ -1,13 +1,16 @@
 import React from 'react';
 import '../App.css';
 import { getData } from './header.js';
+// import Timer from './timer';
 
-const clickedCards = [];
+// const clickedCards = [];
 
 const Cards = props => {
+  const [clickedCards, setClickedCards] = React.useState([]);
+  const [flipped, setFlip] = React.useState(false);
+
   console.log('i am the array of photos in cards', props.photoArray);
 
-  const [flipped, setFlip] = React.useState(false);
   const flipper = event => {
     setFlip(true);
     event.target.parentElement.classList.toggle('clickedCard');
@@ -29,6 +32,7 @@ const Cards = props => {
 
   return (
     <div>
+      {/* <Timer/> */}
       <section className='upperSection'>
         <span className='timer'></span>
         <span className='moves'></span>
@@ -41,7 +45,7 @@ const Cards = props => {
             data-id={photo[0]}
             key={photo[0]}
           >
-            <div className='cardBack'>This is back</div>
+            <div className='cardBack'></div>
             <div className='cardFront'>
               <img
                 className='image'
