@@ -1,6 +1,6 @@
 # Team Rosa and Pat
 ## Memory game 
-![](https://media.giphy.com/media/xUA7bahIfcCqC7S4qA/giphy.gif =300x)
+![](https://media.giphy.com/media/xUA7bahIfcCqC7S4qA/giphy.gif)
 
 
 ---
@@ -28,7 +28,7 @@ As a user, I want a smooth UI which tells me when I get guesses right and wrong.
 ---
 
 ### UI sketch and components
-![](https://i.imgur.com/enVlb9k.jpg =400x)
+![](https://i.imgur.com/enVlb9k.jpg)
 
 
 ---
