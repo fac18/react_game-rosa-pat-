@@ -10,9 +10,13 @@ h1 {
   color: darkslateblue;
 }
 
-input, select{
+select {
   height: 4em;
   margin-left: 1em;
+  color: white;
+}
+
+select {
   color: white;
 }
 
@@ -21,7 +25,6 @@ button {
   background-color: rgb(36, 30, 75);
   color: white;
   padding: 0 2em 0 2em;
-
 }
 
 /* Cards Component */
@@ -55,14 +58,20 @@ button {
   backface-visibility: hidden;
 }
 
-
-
 .cardFront {
   transform: rotateY(180deg);
 }
 
 .cardBack {
-  background: linear-gradient(45deg, darkslateblue 25%, rgb(142, 132, 206) 0, rgb(142, 132, 206) 50%, darkslateblue 0, darkslateblue 75%, rgb(142, 132, 206) 0);
+  background: linear-gradient(
+    45deg,
+    darkslateblue 25%,
+    rgb(142, 132, 206) 0,
+    rgb(142, 132, 206) 50%,
+    darkslateblue 0,
+    darkslateblue 75%,
+    rgb(142, 132, 206) 0
+  );
   background-size: 30px 30px;
 }
 

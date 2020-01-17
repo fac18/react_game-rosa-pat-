@@ -8,15 +8,14 @@ const checkResponse = response => {
     return;
   }
   return response.json();
-
 };
 
- export const getData = querystring => {
+export const getData = querystring => {
   return fetch(
     `https://api.unsplash.com/search/photos?page=1&query=${querystring}&page=10&orientation=portrait&client_id=${process.env.REACT_APP_UNSPLASH_TOKEN}`
   )
-    .then (checkResponse)
-    .then (data => {
+    .then(checkResponse)
+    .then(data => {
       const arrObj = data.results;
       // console.log('our objects array', arrObj);
       const imageURLs = arrObj.map(obj => {
@@ -36,29 +35,27 @@ const checkResponse = response => {
 
 const Header = props => {
   const [theme, setTheme] = useState('');
+  const [name, setName] = useState('');
 
   console.log('i am the new theme', theme);
 
   const handleSubmit = e => {
     console.log('I am the submitted theme', theme);
     console.log(`submitting theme ${theme}`);
-    getData(theme).then(
-      data => {
-        props.setPhotoArray(data);
-      }
-
-    );
+    getData(theme).then(data => {
+      props.setPhotoArray(data);
+    });
     // const parsedResponse = JSON.parse(response);
     // console.log(typeof response);
     // console.log('our response ', response );
     // const imagesUrls = [];
     // const picNumber = 9;
-    
+
     // console.log(' our api response', response);
     e.preventDefault();
   };
 
-  console.log("i am the theme inside handlesubmit", props.photoArray)
+  console.log('i am the theme inside handlesubmit', props.photoArray);
 
   return (
     <div>
@@ -67,17 +64,18 @@ const Header = props => {
         A fun game to test your memory....pick a theme to get started!
       </p>
       <form onSubmit={handleSubmit} className='form'>
-        <label className='label' htmlFor='name'>
+        {/* {name ? <h1> hey {name}!</h1> : null}} */}
+        {/* <label className='label' htmlFor='name'>
           Name
-        </label>
-        <input
+        </label> */}
+        {/* <input
           className='input'
           id='name'
           type='text'
           name='name'
-          // value=''
           placeholder='Put your name here!'
-        ></input>
+          onChange={e => setName(e.target.value)}
+        ></input> */}
         <label className='label' htmlFor='theme'>
           Theme
         </label>
@@ -86,17 +84,16 @@ const Header = props => {
           id='theme'
           type='text'
           name='theme'
-          // value={theme}
           onChange={e => setTheme(e.target.value)}
           placeholder='Pick your theme!'
         ></input>
-        <select className='dropdown'>
+        {/* <select className='dropdown'>
           <option value='easy'> Easy</option>
           <option value='medium'> Medium</option>
           <option value='hard'> Hard</option>
-        </select>
+        </select> */}
         <button className='submit' type='submit'>
-          PLAY 
+          PLAY
         </button>
       </form>
     </div>
